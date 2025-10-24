@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { TicketAPI } from '../service/api'
 import { Link } from 'react-router-dom';
 
-export default function Dashboard() {
+const Dashboard = () => {
   const [stats, setStats] = useState({ total:0, open:0, resolved:0 });
   const [err, setErr] = useState('');
 
@@ -70,3 +70,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default Dashboard;

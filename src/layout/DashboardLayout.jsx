@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useState } from "react";
 
-export default function DashboardLayout() {
+const DashboardLayout = () =>{
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="flex min-h-screen bg-gray-50">
@@ -20,3 +20,6 @@ export default function DashboardLayout() {
     </div>
   );
 }
+
+
+export default DashboardLayout;

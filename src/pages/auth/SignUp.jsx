@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext'
 import toast from 'react-hot-toast'
 
-export default function Signup() {
+const Signup = () => {
   const { signup } = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -80,7 +80,6 @@ export default function Signup() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-          {/* NAME */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
             <input
@@ -93,7 +92,6 @@ export default function Signup() {
             {errors.name && <p className="text-red-600 text-sm mt-2">{errors.name}</p>}
           </div>
 
-          {/* EMAIL */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
             <input
@@ -106,8 +104,7 @@ export default function Signup() {
             />
             {errors.email && <p className="text-red-600 text-sm mt-2">{errors.email}</p>}
           </div>
-
-          {/* PASSWORD */}
+        
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
             <input
@@ -140,7 +137,6 @@ export default function Signup() {
             </ul>
           </div>
 
-          {/* CONFIRM PASSWORD */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
             <input
@@ -174,3 +170,5 @@ export default function Signup() {
     </div>
   )
 }
+
+export default Signup;

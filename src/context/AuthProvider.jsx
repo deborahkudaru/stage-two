@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { AuthContext } from './AuthContext'
 import { AuthAPI } from '../service/api'
 
-export function AuthProvider({ children }) {
+const AuthProvider = ({ children }) => {
   const [session, setSession] = useState(AuthAPI.getSession())
 
   useEffect(() => {
@@ -36,3 +36,5 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   )
 }
+
+export default AuthProvider

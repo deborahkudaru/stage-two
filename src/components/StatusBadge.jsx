@@ -1,4 +1,4 @@
-export default function StatusBadge({ status }) {
+const StatusBadge = ({ status }) => {
   const map = {
     open: { label: 'Open', className: 'bg-green-100 text-green-800' },
     in_progress: { label: 'In Progress', className: 'bg-amber-100 text-amber-800' },
@@ -11,3 +11,5 @@ export default function StatusBadge({ status }) {
     </span>
   );
 }
+
+export default StatusBadge;

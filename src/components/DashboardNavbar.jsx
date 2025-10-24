@@ -3,7 +3,7 @@ import { AuthContext } from '../context/AuthContext'
 import toast from 'react-hot-toast'
 import { HiMenu } from 'react-icons/hi'
 
-export default function DashboardNavbar({ onMenuClick }) {
+const DashboardNavbar = ({ onMenuClick }) => {
   const { logout, session } = useContext(AuthContext)
 
   const handleLogout = () => {
@@ -55,3 +55,5 @@ export default function DashboardNavbar({ onMenuClick }) {
     </nav>
   )
 }
+
+export default DashboardNavbar

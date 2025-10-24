@@ -9,7 +9,7 @@ const validate = (v) => {
   return errors;
 };
 
-export default function TicketForm({ initial = {}, onSubmit, onCancel }) {
+const TicketForm = ({ initial = {}, onSubmit, onCancel }) => {
   const [values, setValues] = useState({
     title: initial.title || '',
     description: initial.description || '',
@@ -117,3 +117,5 @@ export default function TicketForm({ initial = {}, onSubmit, onCancel }) {
     </form>
   );
 }
+
+export default TicketForm;

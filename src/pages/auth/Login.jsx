@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 
-export default function Login() {
+const Login = () => {
   const { login } = useContext(AuthContext);
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
@@ -128,3 +128,5 @@ export default function Login() {
     </div>
   );
 }
+
+export default Login;

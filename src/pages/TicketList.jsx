@@ -4,7 +4,7 @@ import StatusBadge from '../components/StatusBadge';
 import TicketForm from '../components/TicketForm';
 import toast from 'react-hot-toast';
 
-export default function TicketList() {
+const TicketList = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState('');
@@ -204,3 +204,5 @@ export default function TicketList() {
     </div>
   );
 }
+
+export default TicketList;
