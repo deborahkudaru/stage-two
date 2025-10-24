@@ -53,18 +53,16 @@ export default function Login() {
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg border border-gray-100">
         {msg === "session_expired" && (
-          <div className="text-red-700 px-4 py-3 rounded mb-6">
-            Your session has expired — please log in again.
+          <div className="text-red-700 px-4 py-3 rounded mb-6 text-center">
+            Your session has expired.
           </div>
         )}
 
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">Welcome Back</h2>
-          <p className="text-gray-600 mt-2">Log in to your account</p>
+          <h2 className="text-3xl font-bold text-gray-900">Login</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-          {/* EMAIL FIELD */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Email
@@ -86,7 +84,6 @@ export default function Login() {
             )}
           </div>
 
-          {/* PASSWORD FIELD */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Password
@@ -112,7 +109,7 @@ export default function Login() {
             type="submit"
             className="w-full bg-slate-600 hover:bg-slate-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200"
           >
-            Login In
+            Login
           </button>
         </form>
 

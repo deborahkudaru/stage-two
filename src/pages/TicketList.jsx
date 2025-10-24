@@ -75,15 +75,15 @@ export default function TicketList() {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-8">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Tickets</h1>
-          <p className="text-gray-600 mt-2">Manage all your support tickets</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Tickets</h1>
+          <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Manage all your support tickets</p>
         </div>
         <button 
           onClick={() => { setShowForm(s => !s); setEditing(null); }} 
-          className="bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+          className="bg-slate-600 hover:bg-slate-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-colors duration-200 text-sm sm:text-base whitespace-nowrap"
         >
           {showForm ? '✕ Close' : '+ Create Ticket'}
         </button>
@@ -91,8 +91,8 @@ export default function TicketList() {
 
       {/* form */}
       {showForm && (
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Create New Ticket</h2>
+        <div className="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200 mb-4 sm:mb-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Create New Ticket</h2>
           <TicketForm onSubmit={onCreate} />
         </div>
       )}
@@ -100,23 +100,23 @@ export default function TicketList() {
       {/* Loading State */}
       {loading ? (
         <div className="flex justify-center items-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-slate-600"></div>
+          <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-slate-600"></div>
         </div>
       ) : (
-        <div className="grid gap-6 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {tickets.map(t => (
-            <div key={t.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="font-semibold text-gray-900 text-lg pr-2">{t.title}</h3>
+            <div key={t.id} className="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+              <div className="flex justify-between items-start mb-3 sm:mb-4 gap-2">
+                <h3 className="font-semibold text-gray-900 text-base sm:text-lg pr-2 break-words">{t.title}</h3>
                 <StatusBadge status={t.status} />
               </div>
 
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+              <p className="text-gray-600 text-sm mb-3 sm:mb-4 leading-relaxed break-words">
                 {t.description?.slice(0, 120)}
                 {t.description?.length > 120 && '...'}
               </p>
 
-              <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 sm:pt-4 border-t border-gray-100 gap-3 sm:gap-0">
                 <div className="flex space-x-3">
                   <button 
                     onClick={() => setEditing(t)} 
@@ -137,8 +137,8 @@ export default function TicketList() {
               </div>
 
               {editing && editing.id === t.id && (
-                <div className="mt-4 pt-4 border-t border-gray-200">
-                  <h4 className="font-medium text-gray-900 mb-3">Edit Ticket</h4>
+                <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
+                  <h4 className="font-medium text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">Edit Ticket</h4>
                   <TicketForm 
                     initial={editing} 
                     onSubmit={(data) => onUpdate(t.id, data)} 
@@ -154,46 +154,46 @@ export default function TicketList() {
       {/* Empty State */}
       {!loading && tickets.length === 0 && !showForm && (
         <div className="text-center py-12">
-          <div className="text-6xl mb-4">🎫</div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No tickets found</h3>
-          <p className="text-gray-600 mb-6">Get started by creating your first ticket</p>
+          <div className="text-5xl sm:text-6xl mb-4">🎫</div>
+          <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">No tickets found</h3>
+          <p className="text-sm sm:text-base text-gray-600 mb-6 px-4">Get started by creating your first ticket</p>
           <button 
             onClick={() => setShowForm(true)} 
-            className="bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+            className="bg-slate-600 hover:bg-slate-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-colors duration-200 text-sm sm:text-base"
           >
             Create Your First Ticket
           </button>
         </div>
       )}
 
-      {/* Delele comfirmation modal */}
+      {/* Delete confirmation modal */}
       {deleteModal.show && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-6">
+          <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-5 sm:p-6 mx-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Confirm Deletion</h3>
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900">Confirm Deletion</h3>
               <button 
                 onClick={closeDeleteModal}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-400 hover:text-gray-600 transition-colors text-xl"
               >
                 ✕
               </button>
             </div>
             
-            <p className="text-gray-600 mb-6">
-              Are you sure you want to delete the ticket "<span className="font-semibold">{deleteModal.ticket?.title}</span>"? This action cannot be undone.
+            <p className="text-sm sm:text-base text-gray-600 mb-6">
+              Are you sure you want to delete the ticket "<span className="font-semibold break-words">{deleteModal.ticket?.title}</span>"? This action cannot be undone.
             </p>
             
-            <div className="flex gap-3 justify-end">
+            <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">
               <button 
                 onClick={closeDeleteModal}
-                className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm sm:text-base"
               >
                 Cancel
               </button>
               <button 
                 onClick={() => onDelete(deleteModal.ticket.id)}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm sm:text-base"
               >
                 Delete Ticket
               </button>
