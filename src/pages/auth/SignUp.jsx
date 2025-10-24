@@ -14,11 +14,29 @@ export default function Signup() {
     confirm: ''
   })
   const [errors, setErrors] = useState({})
+  const [passwordHints, setPasswordHints] = useState({
+    length: false,
+    upper: false,
+    lower: false,
+    number: false,
+    special: false
+  })
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-    if (errors[e.target.name]) {
-      setErrors({ ...errors, [e.target.name]: '' })
+    const { name, value } = e.target
+    setForm({ ...form, [name]: value })
+
+    if (errors[name]) setErrors({ ...errors, [name]: '' })
+
+    // Real-time password validation
+    if (name === 'password') {
+      setPasswordHints({
+        length: value.length >= 6,
+        upper: /[A-Z]/.test(value),
+        lower: /[a-z]/.test(value),
+        number: /[0-9]/.test(value),
+        special: /[!@#$%^&*(),.?":{}|<>]/.test(value)
+      })
     }
   }
 
@@ -26,7 +44,12 @@ export default function Signup() {
     const err = {}
     if (!form.name.trim()) err.name = 'Name is required'
     if (!form.email.includes('@')) err.email = 'Enter a valid email'
-    if (form.password.length < 6) err.password = 'Minimum 6 characters'
+
+    const { length, upper, lower, number, special } = passwordHints
+    if (!length || !upper || !lower || !number || !special) {
+      err.password = 'Password must include upper, lower, number, special char'
+    }
+
     if (form.password !== form.confirm) err.confirm = 'Passwords do not match'
     setErrors(err)
     return Object.keys(err).length === 0
@@ -57,6 +80,7 @@ export default function Signup() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          {/* NAME */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
             <input
@@ -69,6 +93,7 @@ export default function Signup() {
             {errors.name && <p className="text-red-600 text-sm mt-2">{errors.name}</p>}
           </div>
 
+          {/* EMAIL */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
             <input
@@ -79,11 +104,10 @@ export default function Signup() {
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors"
               placeholder="Enter your email"
             />
-            {errors.email && (
-              <p className="text-red-600 text-sm mt-2">{errors.email}</p>
-            )}
+            {errors.email && <p className="text-red-600 text-sm mt-2">{errors.email}</p>}
           </div>
 
+          {/* PASSWORD */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
             <input
@@ -94,11 +118,29 @@ export default function Signup() {
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors"
               placeholder="Create a password"
             />
-            {errors.password && (
-              <p className="text-red-600 text-sm mt-2">{errors.password}</p>
-            )}
+            {errors.password && <p className="text-red-600 text-sm mt-2">{errors.password}</p>}
+
+            {/* Real-time password hints */}
+            <ul className="text-xs text-gray-600 mt-2 space-y-1">
+              <li className={passwordHints.length ? 'text-green-600' : 'text-gray-400'}>
+                • At least 6 characters
+              </li>
+              <li className={passwordHints.upper ? 'text-green-600' : 'text-gray-400'}>
+                • At least one uppercase letter
+              </li>
+              <li className={passwordHints.lower ? 'text-green-600' : 'text-gray-400'}>
+                • At least one lowercase letter
+              </li>
+              <li className={passwordHints.number ? 'text-green-600' : 'text-gray-400'}>
+                • At least one number
+              </li>
+              <li className={passwordHints.special ? 'text-green-600' : 'text-gray-400'}>
+                • At least one special character
+              </li>
+            </ul>
           </div>
 
+          {/* CONFIRM PASSWORD */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
             <input
@@ -109,9 +151,7 @@ export default function Signup() {
               className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors"
               placeholder="Confirm your password"
             />
-            {errors.confirm && (
-              <p className="text-red-600 text-sm mt-2">{errors.confirm}</p>
-            )}
+            {errors.confirm && <p className="text-red-600 text-sm mt-2">{errors.confirm}</p>}
           </div>
 
           <button
