@@ -1,6 +1,7 @@
 import Sidebar from "../components/Sidebar";
 import DashboardNavbar from "../components/DashboardNavbar";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function DashboardLayout() {
   return (
@@ -12,6 +13,7 @@ export default function DashboardLayout() {
         <main className="p-6 max-w-[1440px] w-full mx-auto">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </div>
   );
