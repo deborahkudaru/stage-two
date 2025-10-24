@@ -14,11 +14,10 @@ export default function TicketForm({ initial = {}, onSubmit, onCancel }) {
     title: initial.title || '',
     description: initial.description || '',
     status: initial.status || 'open',
-    priority: initial.priority || 'medium'
   });
   const [errors, setErrors] = useState({});
 
-  const handle = (k,v)=> setValues(prev=>({ ...prev, [k]: v }));
+  const handle = (k,v) => setValues(prev => ({ ...prev, [k]: v }));
 
   const submit = (e) => {
     e?.preventDefault();
@@ -29,32 +28,91 @@ export default function TicketForm({ initial = {}, onSubmit, onCancel }) {
   };
 
   return (
-    <form onSubmit={submit} className="space-y-3 bg-slate-50 p-3 rounded">
+    <form onSubmit={submit} className="space-y-6">
       <div>
-        <label className="block text-sm font-medium">Title</label>
-        <input value={values.title} onChange={e=>handle('title', e.target.value)} className="w-full border rounded px-3 py-2" />
-        {errors.title && <div className="text-red-600 text-sm">{errors.title}</div>}
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Title <span className="text-red-500">*</span>
+        </label>
+        <input 
+          value={values.title} 
+          onChange={e => handle('title', e.target.value)} 
+          className={`w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors ${
+            errors.title ? 'border-red-300' : 'border-gray-300'
+          }`}
+          placeholder="Enter ticket title"
+        />
+        {errors.title && (
+          <div className="text-red-600 text-sm mt-2 flex items-center">
+            <span className="mr-1">⚠</span>
+            {errors.title}
+          </div>
+        )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium">Status</label>
-        <select value={values.status} onChange={e=>handle('status', e.target.value)} className="w-full border rounded px-3 py-2">
-          <option value="open">open</option>
-          <option value="in_progress">in_progress</option>
-          <option value="closed">closed</option>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Status <span className="text-red-500">*</span>
+        </label>
+        <select 
+          value={values.status} 
+          onChange={e => handle('status', e.target.value)} 
+          className={`w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors ${
+            errors.status ? 'border-red-300' : 'border-gray-300'
+          }`}
+        >
+          <option value="open">Open</option>
+          <option value="in_progress">In Progress</option>
+          <option value="closed">Closed</option>
         </select>
-        {errors.status && <div className="text-red-600 text-sm">{errors.status}</div>}
+        {errors.status && (
+          <div className="text-red-600 text-sm mt-2 flex items-center">
+            <span className="mr-1">⚠</span>
+            {errors.status}
+          </div>
+        )}
       </div>
 
       <div>
-        <label className="block text-sm font-medium">Description</label>
-        <textarea value={values.description} onChange={e=>handle('description', e.target.value)} className="w-full border rounded px-3 py-2" rows="4" />
-        {errors.description && <div className="text-red-600 text-sm">{errors.description}</div>}
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Description
+          <span className="text-gray-500 text-xs font-normal ml-2">
+            {values.description.length}/2000 characters
+          </span>
+        </label>
+        <textarea 
+          value={values.description} 
+          onChange={e => handle('description', e.target.value)} 
+          className={`w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent transition-colors resize-none ${
+            errors.description ? 'border-red-300' : 'border-gray-300'
+          }`} 
+          rows="5"
+          placeholder="Describe the issue or request..."
+        />
+        {errors.description && (
+          <div className="text-red-600 text-sm mt-2 flex items-center">
+            <span className="mr-1">⚠</span>
+            {errors.description}
+          </div>
+        )}
       </div>
 
-      <div className="flex gap-2">
-        <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded">Save</button>
-        {onCancel && <button type="button" onClick={onCancel} className="px-4 py-2 rounded border">Cancel</button>}
+      {/* Action Buttons */}
+      <div className="flex gap-3 pt-4">
+        <button 
+          type="submit" 
+          className="bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex-1"
+        >
+          {initial.id ? 'Update Ticket' : 'Create Ticket'}
+        </button>
+        {onCancel && (
+          <button 
+            type="button" 
+            onClick={onCancel}
+            className="px-6 py-3 rounded-lg font-medium border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors duration-200 flex-1"
+          >
+            Cancel
+          </button>
+        )}
       </div>
     </form>
   );
