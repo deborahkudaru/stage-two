@@ -5,28 +5,26 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <Link 
             to="/" 
-            className="text-2xl font-bold text-rose-700 hover:text-rose-800 transition-colors"
+            className="text-2xl font-bold text-slate-700 hover:text-rose-800 transition-colors"
           >
             Logo
           </Link>
 
-          {/* Navigation Links */}
           <ul className="flex items-center space-x-8">
             <li>
               <Link 
                 to="/" 
-                className="text-gray-700 hover:text-rose-700 font-medium transition-colors"
+                className="text-gray-700 hover:text-slate-700 font-medium transition-colors"
               >
                 Home
               </Link>
             </li>
             <li>
               <Link 
-                to="/login" 
-                className="px-6 py-2 bg-rose-700 text-white rounded-full font-medium hover:bg-rose-800 transition-all transform hover:scale-105 shadow-md"
+                to="/auth/login" 
+                className="px-6 py-2 bg-slate-700 text-white rounded-full font-medium hover:bg-slate-800 transition-all transform hover:scale-105 shadow-md"
               >
                 Login
               </Link>
