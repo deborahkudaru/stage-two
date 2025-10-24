@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { TicketAPI } from '../../service/api';
-import StatusBadge from '../../components/StatusBadge';
-import TicketForm from '../../components/TicketForm';
+import { TicketAPI } from '../service/api';
+import StatusBadge from '../components/StatusBadge';
+import TicketForm from '../components/TicketForm';
 import toast from 'react-hot-toast';
 
 export default function TicketList() {
