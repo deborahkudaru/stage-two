@@ -36,13 +36,13 @@ const Hero = () => {
         <div className="mb-12">
           <Link
             to="/auth/signup"
-            className="px-8 py-3 bg-slate-700 text-white rounded-full font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg inline-block"
+            className="px-8 py-3 bg-slate-700 text-white rounded-lg font-semibold hover:bg-slate-800 transition-all transform hover:scale-105 shadow-lg inline-block"
           >
             Get Started
           </Link>
           <Link
             to="/auth/login"
-            className="ml-4 px-8 py-3 bg-white border border-slate-700 text-gray-800 rounded-full font-semibold hover:bg-slate-800 hover:text-white transition-all transform hover:scale-105 shadow-lg inline-block"
+            className="ml-4 px-8 py-3 bg-white border border-slate-700 text-gray-800 rounded-lg font-semibold hover:bg-slate-800 hover:text-white transition-all transform hover:scale-105 shadow-lg inline-block"
           >
             Login
           </Link>
