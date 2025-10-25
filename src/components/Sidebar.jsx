@@ -1,5 +1,5 @@
 import { NavLink, Link } from "react-router-dom";
-import { MdDashboard, MdConfirmationNumber } from "react-icons/md";
+import { MdDashboard, MdConfirmationNumber, MdClose } from "react-icons/md";
 
 const Sidebar = ({ isOpen, onClose }) => {
   return (
@@ -33,19 +33,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             className="lg:hidden text-gray-500 hover:text-gray-700"
             aria-label="Close sidebar"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <MdClose className="w-6 h-6" />
           </button>
         </div>
 
@@ -88,6 +76,6 @@ const Sidebar = ({ isOpen, onClose }) => {
       </aside>
     </>
   );
-}
+};
 
 export default Sidebar;

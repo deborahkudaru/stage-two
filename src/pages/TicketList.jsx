@@ -7,14 +7,12 @@ import toast from 'react-hot-toast';
 const TicketList = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [err, setErr] = useState('');
   const [editing, setEditing] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [deleteModal, setDeleteModal] = useState({ show: false, ticket: null });
 
   const load = () => {
     setLoading(true); 
-    setErr('');
     TicketAPI.list()
       .then(list => { 
         setTickets(list); 
@@ -22,7 +20,6 @@ const TicketList = () => {
       })
       .catch(e => { 
         const errorMsg = e.message || 'Failed to load tickets. Please retry.';
-        setErr(errorMsg);
         toast.error(errorMsg);
         setLoading(false); 
       });
@@ -79,7 +76,6 @@ const TicketList = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 sm:mb-8 gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Tickets</h1>
-          <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Manage all your support tickets</p>
         </div>
         <button 
           onClick={() => { setShowForm(s => !s); setEditing(null); }} 
@@ -97,7 +93,6 @@ const TicketList = () => {
         </div>
       )}
 
-      {/* Loading State */}
       {loading ? (
         <div className="flex justify-center items-center py-12">
           <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-slate-600"></div>
@@ -107,13 +102,13 @@ const TicketList = () => {
           {tickets.map(t => (
             <div key={t.id} className="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
               <div className="flex justify-between items-start mb-3 sm:mb-4 gap-2">
-                <h3 className="font-semibold text-gray-900 text-base sm:text-lg pr-2 break-words">{t.title}</h3>
+                <h3 className="font-semibold text-gray-900 text-base sm:text-lg pr-2 wrap-break-word">{t.title}</h3>
                 <StatusBadge status={t.status} />
               </div>
 
-              <p className="text-gray-600 text-sm mb-3 sm:mb-4 leading-relaxed break-words">
-                {t.description?.slice(0, 120)}
-                {t.description?.length > 120 && '...'}
+              <p className="text-gray-600 text-sm mb-3 sm:mb-4 leading-relaxed wrap-break-word">
+                {t.description?.slice(0, 60)}
+                {t.description?.length > 60 && '...'}
               </p>
 
               <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center pt-3 sm:pt-4 border-t border-gray-100 gap-3 sm:gap-0">
@@ -181,7 +176,7 @@ const TicketList = () => {
             </div>
             
             <p className="text-sm sm:text-base text-gray-600 mb-6">
-              Are you sure you want to delete the ticket "<span className="font-semibold break-words">{deleteModal.ticket?.title}</span>"? This action cannot be undone.
+              Are you sure you want to delete the ticket "<span className="font-semibold wrap-break-word">{deleteModal.ticket?.title}</span>"? This action cannot be undone.
             </p>
             
             <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end">

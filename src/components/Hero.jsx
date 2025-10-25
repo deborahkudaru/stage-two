@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white">
+      {/* circles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-slate-500 rounded-full opacity-70"></div>
       <div className="absolute top-40 right-20 w-48 h-48 bg-slate-400 rounded-full opacity-60"></div>
       <div className="absolute bottom-60 left-1/4 w-40 h-40 bg-slate-300 rounded-full opacity-80"></div>
       <div className="absolute top-1/3 right-10 w-24 h-24 bg-slate-600 rounded-full opacity-75"></div>
       <div className="absolute bottom-40 right-1/3 w-36 h-36 bg-slate-200 rounded-full opacity-70"></div>
-
+      {/* wavy background */}
       <div className="absolute inset-0">
         <svg
           className="absolute bottom-0 w-full h-auto"
@@ -24,7 +25,6 @@ const Hero = () => {
         </svg>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center">
         <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
           Welcome to Ticket Tocket

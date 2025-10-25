@@ -96,7 +96,6 @@ const TicketForm = ({ initial = {}, onSubmit, onCancel }) => {
         )}
       </div>
 
-      {/* Action Buttons */}
       <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-2 sm:pt-4">
         {onCancel && (
           <button 
