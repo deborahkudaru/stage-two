@@ -146,7 +146,6 @@ const TicketList = () => {
         </div>
       )}
 
-      {/* Empty State */}
       {!loading && tickets.length === 0 && !showForm && (
         <div className="text-center py-12">
           <div className="text-5xl sm:text-6xl mb-4">🎫</div>

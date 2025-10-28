@@ -44,7 +44,6 @@ const Login = () => {
       nav("/dashboard");
     } catch (err) {
       toast.error(err.message || "Invalid credentials");
-      // attach server error to password field for user visibility
       setErrors({ ...errors, password: err.message || "Invalid credentials" });
     }
   };

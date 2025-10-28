@@ -28,7 +28,6 @@ const Signup = () => {
 
     if (errors[name]) setErrors({ ...errors, [name]: '' })
 
-    // Real-time password validation
     if (name === 'password') {
       setPasswordHints({
         length: value.length >= 6,
@@ -117,7 +116,6 @@ const Signup = () => {
             />
             {errors.password && <p className="text-red-600 text-sm mt-2">{errors.password}</p>}
 
-            {/* Real-time password hints */}
             <ul className="text-xs text-gray-600 mt-2 space-y-1">
               <li className={passwordHints.length ? 'text-green-600' : 'text-gray-400'}>
                 • At least 6 characters
