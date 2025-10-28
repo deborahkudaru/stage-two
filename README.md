@@ -1,5 +1,5 @@
 # TICKET TOCKET
-A ticket managemnet system where you can create, eidt and update your tickets.
+A ticket managemnet system where you can create, eidt and update your tickets.Built with react, javascript, and tailwindcss
 
 ## Features
 - Tailwind CSS styling
@@ -10,7 +10,7 @@ A ticket managemnet system where you can create, eidt and update your tickets.
 
 ## ⚙️ Setup Instructions
 
-### 1. Clone the repository
+### Clone the repository, enter directory, install dependecies and run locally
 ```bash
 git clone https://github.com/deborahkudaru/stage-two.git
 cd stage-two
