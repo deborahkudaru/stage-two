@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white">
+    <div className="relative min-h-screen overflow-hidden">
       {/* circles */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-slate-500 rounded-full opacity-70"></div>
       <div className="absolute top-40 right-20 w-48 h-48 bg-slate-400 rounded-full opacity-60"></div>

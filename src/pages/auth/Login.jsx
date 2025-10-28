@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg border border-gray-100">
         {msg === "session_expired" && (
           <div className="text-red-700 px-4 py-3 rounded mb-6 text-center">
